@@ -23,7 +23,7 @@ class OpenGraph
      *
      * @return [type]      [description]
      */
-    static function fetch($url)
+    public static function fetch($url)
     {
         // Update to CURL
         $html = file_get_contents($url);
@@ -38,7 +38,7 @@ class OpenGraph
      *
      * @return OpenGraph
      */
-    static public function parse($html)
+    public static function parse($html)
     {
         if (empty($html)) {
             throw new \LengthException('HTML is blank.');
