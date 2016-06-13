@@ -1,7 +1,7 @@
 {
     "name": "jworksuk/opengraph",
     "type": "library",
-    "description": ":package_description",
+    "description": "OpenGraph page scrapper.",
     "keywords": [
         "jworksuk",
         "opengraph"

@@ -5,8 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-OpenGraph
-Open Graph page scrapper.
+OpenGraph page scrapper.
 
 ## Install
 
