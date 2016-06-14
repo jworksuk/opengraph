@@ -33,8 +33,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 $ composer test
 ```
 
-HTML blank exception
-No tags exception
+## TODO
+
+ - Better Readme
+ - CURL fetch
+ - Parsed data should should be a class
 
 ## Contributing
 
