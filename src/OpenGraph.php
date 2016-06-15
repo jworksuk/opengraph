@@ -9,7 +9,7 @@ class OpenGraph
 {
     public $tags;
     /**
-     * Create a new Skeleton Instance
+     * Create a new OpenGraph Instance
      */
     public function __construct()
     {
@@ -17,16 +17,33 @@ class OpenGraph
     }
 
     /**
-     * [fetch description]
+     * Fetches html content
      *
-     * @param string $url Page url
+     * @param  string $url
      *
-     * @return [type]      [description]
+     * @return OpenGraph
      */
     public static function fetch($url)
     {
-        // Update to CURL
-        $html = file_get_contents($url);
+        // Is URL
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            throw new \Exception('Invalid URL');
+        }
+
+        // Get cURL resource
+        $curl = curl_init();
+
+        // Set some options - we are passing in a useragent too here
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $url,
+        ]);
+
+        // Send the request & save response to $resp
+        $html = curl_exec($curl);
+
+        // Close request to clear up some resources
+        curl_close($curl);
 
         return self::parse($html);
     }
@@ -49,13 +66,18 @@ class OpenGraph
         $page = new self;
         $doc = new DomDocument();
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
-        $query = '//*/meta[starts-with(@property, \'og:\')]';
-        $metas = $xpath->query($query);
+
+        $metas = $doc->getElementsByTagName('meta');
+
         foreach ($metas as $meta) {
-            $property = str_replace('og:', '', $meta->getAttribute('property'));
-            $content = $meta->getAttribute('content');
-            $page->tags[$property] = $content;
+            if ($meta->hasAttribute('property') &&
+                strpos($meta->getAttribute('property'), 'og:') === 0) {
+                $key = trim(
+                    str_replace('og:', '', $meta->getAttribute('property'))
+                );
+
+                $page->tags[$key] = $meta->getAttribute('content');
+            }
         }
 
         if (count($page->tags) == 0) {

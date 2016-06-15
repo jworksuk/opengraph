@@ -36,9 +36,9 @@ $ composer test
 ## TODO
 
  - Better Readme
- - CURL fetch
  - Parsed data should should be a class
-
+ - Needs to support arrays
+ - Malformed meta tags
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
@@ -58,11 +58,11 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/jworksuk/opengraph.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/JWorksUK/opengraph/master.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/jworksuk/opengraph/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/jworksuk/opengraph.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/jworksuk/opengraph
-[link-travis]: https://travis-ci.org/JWorksUK/opengraph
+[link-travis]: https://travis-ci.org/jworksuk/opengraph
 [link-downloads]: https://packagist.org/packages/jworksuk/opengraph
 [link-author]: https://github.com/jworksuk
 [link-contributors]: ../../contributors
